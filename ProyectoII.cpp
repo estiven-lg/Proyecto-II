@@ -3,17 +3,44 @@
 #include <fstream>
 
 using namespace std;
-void crearBaseDeDatos();
+
 string path = "./datos/Producto.txt";
+
+void crearBaseDeDatos();
+void agregarProducto();
+void BuscarProducto();
+void modificarProducto();
+
 int main()
 {
+    char opcion[2];
     crearBaseDeDatos();
+    cout << "que desea hacer?\n";
+    cout << "1. Agregar producto\n";
+    cout << "2. Buscar a un producto\n";
+    cout << "3. Modificar los datos de un producto\n";
+    cout << ":";
+    cin.getline(opcion, 2);
+    switch (opcion[0])
+    {
+    case '1':
+        void agregarProducto();
+        break;
+    case '2':
+        void agregarProducto();
+        break;
+    case '3':
+        void modificarProducto();
+        break;
+    default:
+        cout << "opcion no valida.";
+        break;
+    }
     return 0;
-}
+};
 
 void crearBaseDeDatos()
 {
-    ;
     ifstream archivo(path.c_str(), ios::out);
     if (archivo.fail())
     {
@@ -25,4 +52,16 @@ void crearBaseDeDatos()
             exit(1);
         }
     }
-}
+};
+
+void agregarProducto(){
+
+};
+
+void BuscarProducto(){
+
+};
+
+void modificarProducto(){
+
+};
