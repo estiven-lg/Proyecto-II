@@ -2,24 +2,27 @@
 #include <stdlib.h>
 #include <fstream>
 
-
 using namespace std;
-void ingresarProducto();
-
+void crearBaseDeDatos();
+string path = "./datos/Producto.txt";
 int main()
 {
-    ingresarProducto();
+    crearBaseDeDatos();
     return 0;
 }
 
-void ingresarProducto()
+void crearBaseDeDatos()
 {
-    ofstream datos("./datos/Producto.txt",ios::app);
-    if (datos.fail())
+    ;
+    ifstream archivo(path.c_str(), ios::out);
+    if (archivo.fail())
     {
-        cout<<"No se pudo crear la base de datos :c \n";
-        exit(1);
+        ofstream archivoNuevo;
+        archivoNuevo.open(path.c_str());
+        if (archivoNuevo.fail())
+        {
+            cout << "No se pudo crear la base de datos :c \n";
+            exit(1);
+        }
     }
-    datos<<"\nhola mundo";
-    datos.close();
 }
