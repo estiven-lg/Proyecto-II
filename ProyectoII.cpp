@@ -4,6 +4,18 @@
 
 using namespace std;
 
+struct Producto
+{
+    string nombre;
+    string codigo;
+    float precio;
+    string proveedor;
+    int existencia;
+    char estado;
+    float descuento; 
+};
+
+
 string path = "./datos/Producto.txt";
 
 void crearBaseDeDatos();
