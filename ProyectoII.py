@@ -1,4 +1,7 @@
 import os
+from re import A
+import random
+import string
 
 path = "./datos/Producto.txt"
 
@@ -10,7 +13,17 @@ def crearBaseDeDatos():
         archivo.close()
 
 
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 def agregarProducto():
+    Nombre= ""
+    Precio= 0
+    nombre= input("Ingrese el nombre del producto") 
+    precio= int( input("Ingresa el precio prro"))
+    archivo= open(path,"a")
+    codigo= id_generator()
+    archivo.write(codigo+","+nombre+","+str(precio)+"|\n")
+   
     print("agregarProducto")
 
 
