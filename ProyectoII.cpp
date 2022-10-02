@@ -36,13 +36,13 @@ int main()
     switch (opcion[0])
     {
     case '1':
-        void agregarProducto();
+        agregarProducto();
         break;
     case '2':
-        void agregarProducto();
+        agregarProducto();
         break;
     case '3':
-        void modificarProducto();
+        modificarProducto();
         break;
     default:
         cout << "opcion no valida.";
@@ -67,7 +67,23 @@ void crearBaseDeDatos()
 };
 
 void agregarProducto(){
+    Producto nuevoProducto; 
+    cout << "ingrese el nombre del producto,por favor\n";
+    cin >> nuevoProducto.nombre;
+    cin.ignore();
+    cout << "ingrese el precio del producto ,por favor\n";
+    cin >> nuevoProducto.precio;
+    cout << nuevoProducto.nombre;
+     
+    ofstream archivo;
+    archivo.open(path.c_str(), ios::app);
+    archivo << nuevoProducto.nombre;
+    archivo <<",";
+    archivo << nuevoProducto.precio;
+    archivo <<"| \n";
 
+    archivo.close();
+    
 };
 
 void BuscarProducto(){
