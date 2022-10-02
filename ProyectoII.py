@@ -18,11 +18,21 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
 def agregarProducto():
     Nombre= ""
     Precio= 0
+    Proveedor= ""
+    Existencia= 0
+    Descuento= 0
     nombre= input("Ingrese el nombre del producto") 
-    precio= int( input("Ingresa el precio prro"))
+    precio= int( input("Ingresa el precio del producto"))
+    proveedor= input("Ingrese el nombre del Proveedor") 
+    existencia = int( input("Ingresa el numero de existencias"))
+    descuento= int( input("Ingresa el descuento por producto"))
+    
+    
+    
     archivo= open(path,"a")
     codigo= id_generator()
-    archivo.write(codigo+","+nombre+","+str(precio)+"|\n")
+    archivo.write(codigo+","+nombre+","+str(precio)+","+proveedor+","+str(existencia)+","+str(descuento)+","+"|\n")
+    
    
     print("agregarProducto")
 
