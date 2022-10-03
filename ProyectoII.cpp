@@ -79,6 +79,7 @@ void agregarProducto(){
      cin.ignore();
     cout << "ingrese el proveedor del producto ,por favor\n";
     cin >> nuevoProducto.proveedor;
+    cin.ignore();
     cout << "ingrese el estado del producto ,por favor\n";
     cin >> nuevoProducto.estado;
      cin.ignore();
