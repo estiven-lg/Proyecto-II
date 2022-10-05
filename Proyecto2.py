@@ -123,6 +123,16 @@ def BuscarProducto():
 
 def modificarProducto():
     print("modificarProducto")
+    
+    archivoproducto = open("Producto.txt", "r")
+    texto = archivoproducto.read()
+    x1= input("Escribe el dato a cambiar :")
+    x= input("Escribe el nuevo dato:")
+    texto = texto.replace((x1),(x))
+    archivoproducto.close()
+    archivoproducto = open("Producto.txt", "w")
+    archivoproducto.write(texto)
+    archivoproducto.close()
 
 
 crearBaseDeDatos()

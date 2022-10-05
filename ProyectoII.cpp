@@ -73,22 +73,22 @@ void agregarProducto(){
     cin.ignore();
     cout << "ingrese el precio del producto ,por favor\n";
     cin >> nuevoProducto.precio;
-     cin.ignore();
+    cin.ignore();
     cout << "ingrese el codigo del producto ,por favor\n";
     cin >> nuevoProducto.codigo;
-     cin.ignore();
+    cin.ignore();
     cout << "ingrese el proveedor del producto ,por favor\n";
     cin >> nuevoProducto.proveedor;
     cin.ignore();
     cout << "ingrese el estado del producto ,por favor\n";
     cin >> nuevoProducto.estado;
-     cin.ignore();
-   cout << "ingrese el existencia del producto ,por favor\n";
+    cin.ignore();
+    cout << "ingrese el numero de existencia del producto ,por favor\n";
     cin >> nuevoProducto.existencia;
-     cin.ignore();
+    cin.ignore();
     cout << "ingrese el descuento del producto ,por favor\n";
     cin >> nuevoProducto.descuento;
-     cin.ignore();
+    cin.ignore();
      
     ofstream archivo;
     archivo.open(path.c_str(), ios::app);
