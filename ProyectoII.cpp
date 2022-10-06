@@ -1,3 +1,12 @@
+/**
+ * @file proyectoll.cpp
+ * @authors Estiven  Laferré (), Javier de la cuz (), Keila Ramirez (kramireza10@miumg.gt)
+ * @brief 
+ * @version 0.1
+ * @date 2022-10-07
+ * @copyright GPL v3
+ */
+
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
