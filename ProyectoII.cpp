@@ -33,29 +33,37 @@ void imprimirProductos(Producto *productos, int size);
 vector<Producto> obtenerDatos();
 int main()
 {
-    char opcion[2];
     crearBaseDeDatos();
-
-    cout << "que desea hacer?\n";
-    cout << "1. Agregar producto\n";
-    cout << "2. Buscar a un producto\n";
-    cout << "3. Modificar los datos de un producto\n";
-    cout << ":";
-    cin.getline(opcion, 2);
-    switch (opcion[0])
+    char opcion[2];
+    while (opcion[0] != '4')
     {
-    case '1':
-        agregarProducto();
-        break;
-    case '2':
-        BuscarProducto();
-        break;
-    case '3':
-        modificarProducto();
-        break;
-    default:
-        cout << "opcion no valida.";
-        break;
+
+        cout << "que desea hacer?\n";
+        cout << "1. Agregar producto\n";
+        cout << "2. Buscar a un producto\n";
+        cout << "3. Modificar los datos de un producto\n";
+        cout << "4. Salir\n";
+        cout << ":";
+        cin >> opcion;
+        cin.ignore();
+        switch (opcion[0])
+        {
+        case '1':
+            agregarProducto();
+            break;
+        case '2':
+            BuscarProducto();
+            break;
+        case '3':
+            modificarProducto();
+            break;
+        case '4':
+            cout << "Adios :D \n";
+            break;
+        default:
+            cout << "opcion no valida.";
+            break;
+        }
     }
     return 0;
 };
@@ -249,7 +257,6 @@ void BuscarProducto()
             resultadosList.push_back(producto);
         }
     }
- 
 
     Producto *productos = resultadosList.data();
     int size = resultadosList.size();
@@ -257,6 +264,105 @@ void BuscarProducto()
     imprimirProductos(productos, size);
 };
 
-void modificarProducto(){
+void modificarProducto()
+{
+    int index = -1;
+    int contador = 0;
+    string contenido = "";
+    string lineaActual;
+    string IDProducto;
 
+    cout << "Ingrese el ID del producto que desea modificar:";
+    cin >> IDProducto;
+    cin.ignore();
+
+    // getline(cin, IDProducto);
+    cout << "s";
+    transform(IDProducto.begin(), IDProducto.end(), IDProducto.begin(), ::toupper);
+
+    Producto *productos = obtenerDatos().data();
+    int size = obtenerDatos().size();
+
+    for (int i = 0; i < size; i++)
+    {
+        if (productos[i].codigo == IDProducto)
+        {
+            index = i;
+        }
+    }
+    if (index == -1)
+    {
+        cout << "lo siento, el dato con el id:'" << IDProducto << "' no se encuentra\n";
+        return;
+    }
+    Producto nuevoProducto = productos[index];
+
+    imprimirProducto(nuevoProducto);
+
+    cout << "ingrese el nombre del producto,por favor\n";
+    cin >> nuevoProducto.nombre;
+    cin.ignore();
+    imprimirProducto(nuevoProducto);
+
+    cout << "ingrese el precio del producto ,por favor\n";
+    cin >> nuevoProducto.precio;
+    cin.ignore();
+    imprimirProducto(nuevoProducto);
+
+    cout << "ingrese el proveedor del producto ,por favor\n";
+    cin >> nuevoProducto.proveedor;
+    cin.ignore();
+    imprimirProducto(nuevoProducto);
+
+    cout << "ingrese el existencia del producto ,por favor\n";
+    cin >> nuevoProducto.existencia;
+    cin.ignore();
+    imprimirProducto(nuevoProducto);
+
+    cout << "ingrese el estado del ,aprovado(A) o Reprobado(R) ,por favor\n";
+    cin >> nuevoProducto.estado;
+    cin.ignore();
+    while (toupper(nuevoProducto.estado[0]) != 'A' && toupper(nuevoProducto.estado[0]) != 'R')
+    {
+
+        cout << "ingrese una opcion valida\n";
+        nuevoProducto.estado[0] = '-';
+        cout << "ingrese el estado del ,aprovado(A) o Reprobado(R) ,por favor\n";
+        cin >> nuevoProducto.estado;
+        cin.ignore();
+    };
+    nuevoProducto.estado[0] = toupper(nuevoProducto.estado[0]);
+
+    imprimirProducto(nuevoProducto);
+    cout << "ingrese el descuento del producto ,por favor\n";
+    cin >> nuevoProducto.descuento;
+    cin.ignore();
+    imprimirProducto(nuevoProducto);
+
+    ifstream archivoAntiguo;
+    archivoAntiguo.open(path.c_str(), ios::in);
+    while (getline(archivoAntiguo, lineaActual))
+    {
+        if (contador == index)
+        {
+            contenido += nuevoProducto.codigo + ",";
+            contenido += nuevoProducto.nombre + ",";
+            contenido += to_string(nuevoProducto.precio).substr(0, 4) + ",";
+            contenido += nuevoProducto.proveedor + ",";
+            contenido += to_string(nuevoProducto.existencia) + ",";
+            contenido += nuevoProducto.estado[0];
+            contenido += ",";
+            contenido += to_string(nuevoProducto.descuento).substr(0, 4) + ",|\n";
+        }
+        else
+        {
+            contenido += lineaActual + "\n";
+        }
+        contador++;
+    }
+    archivoAntiguo.close();
+    ofstream archivoNuevo;
+    archivoNuevo.open(path.c_str(), ios::out);
+    archivoNuevo << contenido;
+    archivoNuevo.close();
 };

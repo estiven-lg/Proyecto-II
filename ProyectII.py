@@ -144,9 +144,7 @@ def modificarProducto():
             index = i
             break
     # si el el index es diferente de -1 es porque encontro algo
-    if(index != -1):
-        print(index)
-    else:
+    if(index == -1):
         print('lo siento, el dato con el id:"', IDProducto, '" no se encuentra')
         return
     
@@ -194,7 +192,7 @@ while( opcion != "4"):
     print("1. Agregar producto")
     print("2. Buscar a un producto")
     print("3. Modificar los datos de un producto")
-    print("4.Salir")
+    print("4 .Salir")
     opcion = input(": ")[0].lower()
 
     if (opcion == "1"):
