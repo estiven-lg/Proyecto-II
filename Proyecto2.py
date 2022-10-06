@@ -6,6 +6,8 @@ import string
 path = "./datos/Producto.txt"
 
 # funcion para verificar que exista una base de datos y si no la crea
+
+
 def crearBaseDeDatos():
     exits = os.path.isfile(path)
     if(not exits):
@@ -13,16 +15,20 @@ def crearBaseDeDatos():
         archivo.close()
 
 # generador de id
+
+
 def IDGenerator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 # funcion para mostrar uno o mas productos
+
+
 def imprimirProducto(Productos):
     tabla = """
     +--------------------------------------------------------------+
     | Codigo Nombre    Precio Proveedor Existencia Estado descuento|
     |--------------------------------------------------------------|
-    {}+--------------------------------------------------------------+\   
+    {}+--------------------------------------------------------------+   
     """
     body = ""
     for Producto in Productos:
@@ -40,7 +46,7 @@ def imprimirProducto(Productos):
 
 # funcion para mandar a traer los datos del txt
 def obtenerDatos():
-    #funcion para agarrar una linea del txt y convertirlo a un objecto producto
+    # funcion para agarrar una linea del txt y convertirlo a un objecto producto
     def convertirTextoAProducto(texto):
         preProducto = texto.replace('|', '').split(",")
         Producto = {
@@ -63,6 +69,8 @@ def obtenerDatos():
     return Productos
 
 # funcion para agregar producto
+
+
 def agregarProducto():
     # objeto con las propiedades de un producto
     Producto = {
@@ -102,6 +110,8 @@ def agregarProducto():
     archivo.close()
 
 # funcion para buscar producto
+
+
 def BuscarProducto():
     # listado donde iran los productos que coincidan en la busqueda
     resultados = []
@@ -110,7 +120,7 @@ def BuscarProducto():
 
     # recorre todo el listado y solo agrega en resultados los productos con alguna concidencia
     for producto in productos:
-        #la busqueda aplica a solo codigo y nombre del producto se uso regex
+        # la busqueda aplica a solo codigo y nombre del producto se uso regex
         if (re.search(busqueda, producto['codigo'], re.IGNORECASE) or re.search(busqueda, producto['nombre'], re.IGNORECASE)):
             resultados.append(producto)
 
@@ -121,40 +131,79 @@ def BuscarProducto():
         print("no se encontraron resultados en tu busqueda :c")
 
 # funcion para modificar producto
+
+
 def modificarProducto():
-    print("modificarProducto")
-    listdatas=[]
-    with open ("./datos/Producto.txt","r") as reader:
-        for line in reader.readlines():
-            listdatas.append(line)   
-    print(listdatas)
-    dato=input("que elemento desea modificar?")
-    if dato in listdatas:
-        j=input("ingrese el nuevo dato: ")
-        x=x.replace(dato,j)
-    else:
-        print("lo siento, ese dato no se encuentra")
-        
+    IDProducto = input("Ingrese el ID del producto que desea modificar:")
+    index = -1
+    productos = obtenerDatos()
     
-          
+    #recoremos el listado de producto hasta obtener uno con el id que el usuario nos dio
+    for i in range(len(productos)):
+        if (productos[i]['codigo'].upper() == IDProducto.upper()):
+            index = i
+            break
+    # si el el index es diferente de -1 es porque encontro algo
+    if(index != -1):
+        print(index)
+    else:
+        print('lo siento, el dato con el id:"', IDProducto, '" no se encuentra')
+        return
+    
+    #producto encontrado el cual modificaremos
+    nuevoProducto = productos[index]
+    
+    # se muestra como va el producto mientra el usuario lo va modificando
+    imprimirProducto([nuevoProducto])
+    nuevoProducto["nombre"] = input("Ingrese el nombre del producto:")
+    imprimirProducto([nuevoProducto])
+    nuevoProducto["precio"] = float(input("Ingresa el precio del producto:"))
+    imprimirProducto([nuevoProducto])
+    nuevoProducto["proveedor"] = input("Ingrese el nombre del Proveedor:")
+    imprimirProducto([nuevoProducto])
+    nuevoProducto["existencia"] = int(input("Ingresa el numero de existencias:"))
+    imprimirProducto([nuevoProducto])
+
+    nuevoProducto["estado"] = input("ingresa el estado del producto, Aprovado(A) o Reprobado(R):").upper()[0]
+    while(nuevoProducto["estado"][0].upper() != "A" and nuevoProducto["estado"][0].upper() != "R"):
+        print("ingrese una opcion valida")
+        nuevoProducto["estado"] = input(
+            "ingresa el estado del producto, Aprovado(A) o Reprobado(R):").upper()
+        
+    imprimirProducto([nuevoProducto])
+    nuevoProducto["descuento"] = float(
+        input("Ingresa el descuento por producto:"))
+    
+    print("Producto modificado :D !!!")
+    imprimirProducto([nuevoProducto])
+
+    #re-escribimos todo el txt pero con la linea cambiada
+    archivoAntiguo = open(path, 'r').readlines()
+    archivoAntiguo[index] = nuevoProducto["codigo"]+","+nuevoProducto["nombre"] + ","+str(nuevoProducto["precio"])+","+nuevoProducto["proveedor"] + "," +str(nuevoProducto["existencia"])+","+nuevoProducto["estado"] + ","+str(nuevoProducto["descuento"])+"|\n"
+    nuevoArchivo = open(path, 'w')
+    nuevoArchivo.writelines(archivoAntiguo)
+    nuevoArchivo.close()
 
 
+#aqui empieza el cuerpo del codigo
 crearBaseDeDatos()
 
-print('''
-Que Desea Hacer?
-1. Agregar producto
-2. Buscar a un producto
-3. Modificar los datos de un producto
-''')
+opcion = 0
+while( opcion != "4"):
+    print("Que Desea Hacer?")
+    print("1. Agregar producto")
+    print("2. Buscar a un producto")
+    print("3. Modificar los datos de un producto")
+    print("4.Salir")
+    opcion = input(": ")[0].lower()
 
-opcion = input(": ")[0].lower()
-
-if (opcion == "1"):
-    agregarProducto()
-elif (opcion == "2"):
-    BuscarProducto()
-elif (opcion == "3"):
-    modificarProducto()
-else:
-    print("Opcion no valida")
+    if (opcion == "1"):
+        agregarProducto()
+    elif (opcion == "2"):
+        BuscarProducto()
+    elif (opcion == "3"):
+        modificarProducto()
+    elif(opcion == "4"):
+        print("Adios :D")
+    else:
+        print("\nOpcion no valida\n")
