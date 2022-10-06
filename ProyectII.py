@@ -1,3 +1,10 @@
+
+"""
+@authors Estiven Laferré <@miumg.gt, Javier De La Cruz <@miumg.gt, Keila Ramírez <kramireza10@miumg.gt
+@description Proyecto ll, está basado en el manejo de archivos.
+@license GPL v3
+@date 2022/10/07
+"""
 import os
 import re
 import random
