@@ -179,24 +179,6 @@ void agregarProducto()
     cout << "ingrese el precio del producto ,por favor\n";
     cin >> nuevoProducto.precio;
     cin.ignore();
-<<<<<<< HEAD
-    cout << "ingrese el codigo del producto ,por favor\n";
-    cin >> nuevoProducto.codigo;
-    cin.ignore();
-    cout << "ingrese el proveedor del producto ,por favor\n";
-    cin >> nuevoProducto.proveedor;
-    cin.ignore();
-    cout << "ingrese el estado del producto ,por favor\n";
-    cin >> nuevoProducto.estado;
-    cin.ignore();
-    cout << "ingrese el numero de existencia del producto ,por favor\n";
-    cin >> nuevoProducto.existencia;
-    cin.ignore();
-    cout << "ingrese el descuento del producto ,por favor\n";
-    cin >> nuevoProducto.descuento;
-    cin.ignore();
-     
-=======
     imprimirProducto(nuevoProducto);
 
     cout << "ingrese el proveedor del producto ,por favor\n";
@@ -228,7 +210,6 @@ void agregarProducto()
     cin.ignore();
     imprimirProducto(nuevoProducto);
 
->>>>>>> d06158cabe11ec31ed558e4640a164bc8af28094
     ofstream archivo;
     archivo.open(path.c_str(), ios::app);
     archivo << nuevoProducto.codigo;
