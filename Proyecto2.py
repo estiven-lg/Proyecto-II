@@ -120,14 +120,23 @@ def BuscarProducto():
     else:
         print("no se encontraron resultados en tu busqueda :c")
 
-
+# funcion para modificar producto
 def modificarProducto():
     print("modificarProducto")
-    path = "./datos/Producto.txt"
-    with open(path) as archivo:
-        for linea in archivo:
-            print(linea)
-   
+    listdatas=[]
+    with open ("./datos/Producto.txt","r") as reader:
+        for line in reader.readlines():
+            listdatas.append(line)   
+    print(listdatas)
+    dato=input("que elemento desea modificar?")
+    if dato in listdatas:
+        j=input("ingrese el nuevo dato: ")
+        x=x.replace(dato,j)
+    else:
+        print("lo siento, ese dato no se encuentra")
+        
+    
+          
 
 
 crearBaseDeDatos()
