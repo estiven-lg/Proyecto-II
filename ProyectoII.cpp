@@ -40,6 +40,7 @@ string IDGenerator();
 void imprimirProducto(Producto producto);
 void imprimirProductos(Producto *productos, int size);
 vector<Producto> obtenerDatos();
+
 int main()
 {
     crearBaseDeDatos();
@@ -285,8 +286,6 @@ void modificarProducto()
     cin >> IDProducto;
     cin.ignore();
 
-    // getline(cin, IDProducto);
-    cout << "s";
     transform(IDProducto.begin(), IDProducto.end(), IDProducto.begin(), ::toupper);
 
     Producto *productos = obtenerDatos().data();

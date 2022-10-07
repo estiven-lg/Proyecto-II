@@ -1,6 +1,6 @@
 
 """
-@authors Estiven Laferré <@miumg.gt, Javier De La Cruz <@miumg.gt, Keila Ramírez <kramireza10@miumg.gt
+@authors Estiven Laferré <elaferreg1@miumg.edu.gt>, Javier De La Cruz <fdelacruzs@miumg.edu.gt>, Keila Ramírez <kramireza10@miumg.gt
 @description Proyecto ll, está basado en el manejo de archivos.
 @license GPL v3
 @date 2022/10/07
@@ -13,8 +13,6 @@ import string
 path = "./datos/Producto.txt"
 
 # funcion para verificar que exista una base de datos y si no la crea
-
-
 def crearBaseDeDatos():
     exits = os.path.isfile(path)
     if(not exits):
@@ -22,13 +20,10 @@ def crearBaseDeDatos():
         archivo.close()
 
 # generador de id
-
-
 def IDGenerator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 # funcion para mostrar uno o mas productos
-
 
 def imprimirProducto(Productos):
     tabla = """
