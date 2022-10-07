@@ -85,7 +85,8 @@ Modo de sólo lectura (r). En este caso no es posible realizar modificaciones so
 - Modo sólo escritura posicionándose al final del archivo (a). En este caso se crea el archivo, si no existe, pero en caso de que exista se posiciona al final, manteniendo el contenido original.
 - Por otro lado, en cualquiera de estos modos se puede agregar un + para pasar a un modo lectura-escritura. El comportamiento de r+ y de w+ no es el mismo, ya que en el primer caso se tiene el archivo completo, y en el segundo caso se trunca el archivo, perdiendo así los datos.
 
-###### *Nota*
+### *Nota*   
+
 _Si un archivo no existe y se lo intenta abrir en modo lectura, se generará un error; en cambio si se lo abre para escritura, Python se encargará de crear el archivo al momento de abrirlo, ya sea con w, a, w+ o con a+)._
 
 De la misma forma que para la lectura, existen dos formas distintas de escribir a un archivo. 
