@@ -5,8 +5,8 @@ Segundo proyecto del segundo semestre de ingeniera en sistemas UMG
 ###### Consiste en realizar dos aplicaciones que realicen las mismas funciones pero en esta ocasión trata sobre los datos de distintos productos, que contengan sus datos , tanto como precio, descuento, así como código único , basado en el manejo de archivos y estructuras . Cada enunciado se llevó a cabo utilizando C++ y Python, todo esto junto al editor visual studio code, GitHub.
 ****
 ### *Requisitos* 
-- version de python: 3.9
-- version de G/C ++ : 10.2.1
+- version de python: 3.9.7
+- version de G/C ++ : MinGW.org GCC-6.3.0-1
 
 ## *Instalación*
 Visual Studio Code Version 1.72 disponible, recuerda tener presente de que los términos 32 bits y 64 bits se refieren a la forma en que el procesador de una computadora y en este [enlace](https://code.visualstudio.com/download) puedes encontrar la opción que más se acople a tus necesidades.
