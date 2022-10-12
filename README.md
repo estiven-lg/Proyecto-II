@@ -14,8 +14,8 @@ Visual Studio Code Version 1.72 disponible, recuerda tener presente de que los t
 #### *¿CÓMO CONFIGURAR VSCODE CON C ++ Y PYTHON?*
 
 Todo lo que necesita hacer es instalar algunas extensiones para ponerlo en funcionamiento.
-- [C / C ++ para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)esta es una extensión auxiliar. Requerido para IntelliSense, depuración y exploración de código.
-- [Python para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) Linting, Debugging(multiproceso, remoto), Intellisense, formato de código, fragmentos y más.
+- [C / C ++ para Visual Studio Code](c++ (MinGW.org GCC-6.3.0-1) 6.3.0)(https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)esta es una extensión auxiliar. Requerido para IntelliSense, depuración y exploración de código.
+- [Python para Visual Studio Code](Python 3.9.7)(https://marketplace.visualstudio.com/items?itemName=ms-python.python) Linting, Debugging(multiproceso, remoto), Intellisense, formato de código, fragmentos y más.
 - [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner):(opcional si se acopla a tus necesidades) Ejecute un fragmento de código o un archivo de código para varios idiomas sin ejecutar comandos.
 - [MSYS2](https://www.msys2.org/) es una colección de herramientas y bibliotecas que le proporciona un entorno fácil de usar para crear, instalar y ejecutar software nativo de Windows.
 
